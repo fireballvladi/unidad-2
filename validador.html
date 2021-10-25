@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>validacion</title>
+  <link rel="stylesheet" href="estilos_registrar.css">
+  <script type="text/javascript" src="validar.js"></script>
+</head>
+
+<body>
+  <h1>registro</h1>
+  <form name="miformulario" id="miformulario" action="registrar.php" method="POST" class="form-register" onsubmit="return validar();">
+    <h2 class="form-titulo">llena los siguientes datos </h2>
+    <div class="contenedor-inputs">
+      <br>
+      <input type="text" name="nombre" id="nombre" placeholder="Nombre" tabindex="1" class="input-2">
+      <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos" tabindex="2" class="input-2">
+      <br/>
+    </div>
+  </form>
+</body>
+function validar() {
+  var nombre, apellidos;
+  var expresion;
+
+  nombre = document.getElementById("nombre").value;
+  apellidos = document.getElementById("apellidos").value;
+  expresion = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/;
+
+  if (nombre == "" || apellidos == "") {
+    alert("Todos los campos son obligatorios.");
+    return false;
+  } else if (nombre.length > 20) {
+    alert("El nombre debe tener menos de 21 carácteres.");
+    document.getElementById("nombre").focus();
+    return false;
+  } else if (apellidos.length > 50) {
+    alert("Los apellidos superan los 50 carácteres de límite.");
+    document.getElementById("apellidos").focus();
+    return false;
+  }
+
